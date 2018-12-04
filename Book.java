@@ -1,72 +1,51 @@
 import java.util.Scanner;
-import java.util.Vector;
 
-public class Book 
-{
-	private String Title;
+public class Book {
+	private String title;
 	private String author;
 	private String bookNum;
 	
-	
-	public void BookData() 
+	public boolean CompareTo (String inputTitle) 
 	{
-		
-		Scanner scan = new Scanner(System.in);
-		System.out.print("ì±…ì˜ ì œëª© ì…ë ¥í•´ì£¼ì„¸ìš” :");
-		Title = scan.nextLine();
-		System.out.print("ì±…ì˜ ì €ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” :");
-		author = scan.nextLine();
-		System.out.print("ì±…ì˜ ì½”ë“œë„˜ë²„ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” :");
-		bookNum= scan.nextLine();	
+		if(inputTitle.equals(title))
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
 		
 	}
 	
-	public void BookPrint() 
+	public static Book getBook(BookInterface bf) 
+	{
+		
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Ã¥ÀÇ Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä :");
+		String title = scan.nextLine();
+		
+		int i = bf.searchBook(title);
+		if(i != -1)
+		{
+			return null;
+		}
+		Book book = new Book();
+		book.title = title;
+		System.out.print("Ã¥ÀÇ ÀúÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä :");
+		book.author = scan.nextLine();
+		System.out.print("Ã¥ÀÇ ÄÚµå³Ñ¹ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä :");
+		book.bookNum= scan.nextLine();
+		return book;
+	}
+	
+	public void bookPrint() 
 	{
 		System.out.println("--------------");
-		System.out.println("ì œëª©: "+ Title);
-		System.out.println("ì €ì: "+ author);
-		System.out.println("ì±…ì½”ë“œë„˜ë²„: "+ Title);
+		System.out.println("Á¦¸ñ: "+ title);
+		System.out.println("ÀúÀÚ: "+ author);
+		System.out.println("Ã¥ÄÚµå³Ñ¹ö: "+ bookNum);
 	}
 	
-	public void menu() 
-	{
-		Scanner scan = new Scanner(System.in);
-		int iChoice = 1;
-		while(iChoice != 0) 
-		{
-			System.out.println("------------------");
-			System.out.println("1: ì±… ë“±ë¡");
-			System.out.println("2: ì±… ë¦¬ìŠ¤íŠ¸ ì¶œë ¥");
-			System.out.println("3: ì±… ê²€ìƒ‰");
-			System.out.println("4: ì±… ì‚­ì œ");
-			
-			iChoice = scan.nextInt();
-			scan.nextLine();
-			switch(iChoice) 
-			{
-			case 1: 
-				{
-					BookData();
-				}
-				break;
-				
-			case 2: 
-				{
-					BookPrint();
-				}
-//				break;
-//			case 3: 
-//				{
-//					SearchMember();
-//				}
-//				break;
-//			case 4: 
-//				{
-//					DeleteMember();
-//				}
-			}
-		}
-	}
+	
 }
-
