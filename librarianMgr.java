@@ -3,7 +3,7 @@ import java.util.*;
 public class librarianMgr 
 {
 	private MemberMgr mmgr = new MemberMgr();
-	private Book Book = new Book();
+	public BookAct act = new BookAct();
 	public void Menu()
 	{
 		Scanner scan = new Scanner(System.in);
@@ -22,13 +22,13 @@ public class librarianMgr
 			{
 			case 1:
 				{
-					mmgr.Menu();
+					mmgr.Menu();;
 					
 				}
 				break;
 			case 2:
 				{
-					Book.menu();
+					act.menu1();
 				}
 				break;
 			case 3:
@@ -36,6 +36,10 @@ public class librarianMgr
 					System.out.println("3: 대여관리");
 				}
 				break;
+			case 4:
+				{
+					System.out.println("0: 이전화면 돌아가기");
+				}
 			}
 		}
 	}

@@ -88,7 +88,7 @@ public class MemberMgr implements MemInterface
 			System.out.println("2: 회원 출력");
 			System.out.println("3: 회원 검색");
 			System.out.println("4: 회원 삭제");
-			
+			System.out.println("0: 이전화면");
 			iChoice = scan.nextInt();
 			scan.nextLine();
 			switch(iChoice) 

@@ -1,130 +1,3 @@
-//import java.util.Scanner;
-//import java.util.Vector;
-//
-//interface bookInterface
-//{
-//	public int searchBook(String inputTitle); 
-//}
-//
-//public class BookAct implements bookInterface {
-//	Vector<Book> bookList = new Vector<Book>();
-//	Scanner scan;
-//	
-//	public void BookAct() {
-////		Scanner scan = new Scanner(System.in);
-//		int iChoice = 1;
-//		while(iChoice != 0) 
-//		{
-//			System.out.println("------------------");
-//			System.out.println("1: Ã¥ µî·Ï");
-//			System.out.println("2: Ã¥ ¸®½ºÆ® Ãâ·Â");
-//			System.out.println("3: Ã¥ °Ë»ö");
-//			System.out.println("4: Ã¥ »èÁ¦");
-//			
-//			System.out.println("");
-//			System.out.print("¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À: ");
-//			scan = new Scanner(System.in);
-//			iChoice = scan.nextInt();
-////			scan.nextLine();
-//			switch(iChoice) 
-//			{
-//			case 1: 
-//				{
-//					insertBook();
-//				}
-//				break;
-//				
-//			case 2: 
-//				{
-//					printBook();
-//				}
-//				break;
-//			case 3: 
-//				{
-//					searchBook();
-//				}
-//				break;
-//			case 4: 
-//				{
-//					deleteBook();
-//				}
-//				break;
-//			}
-//		}
-//	}
-//	
-//	private void insertBook() {
-//		Book book = book.getBook(this);
-//		if(book != null) 
-//		{
-//			bookList.add(book);
-//		}
-//		else
-//		{
-//			System.out.println("Áßº¹µÇ´Â  ÀÔ´Ï´Ù.");
-//		}
-//	}
-//	
-//	private void printBook() 
-//	{
-//		for (int i = 0; i < bookList.size(); i++) {
-//			
-//			bookPrint();
-//			registeredBooks.get(i).BookInsert();
-//		}
-//		
-//		if(registeredBooks.size() == 0) {
-//			System.out.println("µî·ÏµÈ Ã¥ÀÌ ¾ø½À´Ï´Ù.");
-//		}
-//	}
-//	
-//	private void searchBook()
-//	{	
-//		System.out.println("Á¦¸ñ ÀÔ·Â: ");
-//		scan = new Scanner(System.in);
-//		String inputBookTitle = scan.nextLine();
-//		for (int i = 0; i < bookList.size(); i++) {
-//			if(inputBookTitle == bookList.elementAt(i).title) {
-//				System.out.println("--------------");
-//				System.out.println("Á¦¸ñ: "+ bookList.elementAt(i).title);
-//				System.out.println("ÀúÀÚ: "+ bookList.elementAt(i).author);
-//				System.out.println("Ã¥ÄÚµå³Ñ¹ö: "+ bookList.elementAt(i).bookNum);
-//				return;
-//			}
-//		}
-//		
-//		System.out.println("ÀÔ·ÂÇÑ Á¦¸ñÀÇ Ã¥Àº ¾ø½À´Ï´Ù.");
-//		
-//	}
-//	
-//	private void deleteBook()
-//	{	
-//		System.out.println("Á¦¸ñ ÀÔ·Â: ");
-//		scan = new Scanner(System.in);
-//		String inputBookTitle = scan.nextLine();
-//		for (int i = 0; i < bookList.size(); i++) {
-//			if(inputBookTitle == bookList.elementAt(i).title) {
-//				System.out.print(bookList.elementAt(i).title + "ÀÇ Á¤º¸¸¦ »èÁ¦ÇØµµ µË´Ï±î?(yes/no): ");
-//				String inputAnswer = scan.nextLine();
-//				if(inputAnswer == "yes") {
-//					registeredBooks.removeElementAt(i);
-//					System.out.println("Á¤º¸¸¦ »èÁ¦Çß½À´Ï´Ù!");
-//					return;
-//				}
-//				else if(inputAnswer == "no") {
-//					return;
-//				}			
-//			}
-//		}
-//		System.out.println("ÀÔ·ÂÇÑ Á¦¸ñÀÇ Ã¥Àº ¾ø½À´Ï´Ù.");
-//	}
-//
-//	@Override
-//	public int searchBook(String inputTitle) {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
-//}
 
 import java.util.Scanner;
 import java.util.Vector; 
@@ -141,14 +14,14 @@ public class BookAct implements BookInterface
 	private void insertBook() 
 //	private void InserMember(MemberMgr this) 
 	{
-		Book book = Book.getBook(this);
+		Book book = Book.getBook1(this);
 		if(book != null) 
 		{
 			bookList.add(book);
 		}
 		else
 		{
-			System.out.println("Áßº¹µÇ´Â ÀÌ¸§ ÀÔ´Ï´Ù.");
+			System.out.println("ì¤‘ë³µë˜ëŠ” ì½”ë“œë„˜ë²„ ìž…ë‹ˆë‹¤.");
 		}
 	}
 	
@@ -156,7 +29,7 @@ public class BookAct implements BookInterface
 	{
 		for(int i = 0; i < bookList.size(); i++) 
 		{
-			bookList.get(i).bookPrint();
+			bookList.get(i).bookPrint1();
 		}
 	}
 	
@@ -164,7 +37,7 @@ public class BookAct implements BookInterface
 	{
 		for(int i = 0 ; i < bookList.size() ; i++) 
 		{
-			if(	bookList.get(i).CompareTo(inputTitle))
+			if(	bookList.get(i).CompareTo1(inputTitle))
 			{
 				return i;
 			}
@@ -174,52 +47,52 @@ public class BookAct implements BookInterface
 	
 	private void searchBook() 
 	{
-		System.out.print("Ã£À¸½Ç ÀÌ¸§ : ");
+		System.out.print("ì°¾ìœ¼ì‹¤ ì´ë¦„ : ");
 		String inputTitle = scan.nextLine();
 		
 		int i = searchBook(inputTitle);
 		if(i != -1) 
 		{
-			bookList.get(i).bookPrint();
+			bookList.get(i).bookPrint1();
 		}
 		else 
 		{
-			System.out.println("ÀÏÄ¡ÇÏÁö¾Ê½À´Ï´Ù");
+			System.out.println("ì¼ì¹˜í•˜ì§€ì•ŠìŠµë‹ˆë‹¤");
 		}
 		
 	}
 	
 	private void deleteBook() 
 	{
-		System.out.print("»èÁ¦ÇÒ ÀÌ¸§ : ");
+		System.out.print("ì‚­ì œí•  ì±…ì´ë¦„ : ");
 		String inputTitle = scan.nextLine();
 		
 		int i = searchBook(inputTitle);
 		if(i != -1) 
 		{
 			bookList.remove(i);
-			System.out.println("»èÁ¦µÇ¾ú½À´Ï´Ù.");
+			System.out.println("ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 		}
 		else 
 		{
-			System.out.println("ÀÏÄ¡ÇÏÁö¾Ê½À´Ï´Ù");
+			System.out.println("ì¼ì¹˜í•˜ì§€ì•ŠìŠµë‹ˆë‹¤");
 		}
 		
 	}
 	
-	public void menu() 
+	public void menu1() 
 	{
 		int iChoice = 1;
 		while(iChoice != 0) 
 		{
 			System.out.println("------------------");
-			System.out.println("1: Ã¥ µî·Ï");
-			System.out.println("2: Ã¥ ¸®½ºÆ® Ãâ·Â");
-			System.out.println("3: Ã¥ °Ë»ö");
-			System.out.println("4: Ã¥ »èÁ¦");
+			System.out.println("1: ì±… ë“±ë¡");
+			System.out.println("2: ì±… ë¦¬ìŠ¤íŠ¸ ì¶œë ¥");
+			System.out.println("3: ì±… ê²€ìƒ‰");
+			System.out.println("4: ì±… ì‚­ì œ");
 			
-			System.out.println("");
-			System.out.print("¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À: ");
+//			System.out.println("");
+			System.out.print("ì½”ë“œë²ˆí˜¸ë¥¼ ìž…ë ¥í•´ì£¼ì‹­ì‹œì˜¤: ");
 			iChoice = scan.nextInt();
 			scan.nextLine();
 			switch(iChoice) 

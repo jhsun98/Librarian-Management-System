@@ -1,11 +1,14 @@
 import java.util.Scanner;
+import java.util.Vector;
+
+import java.util.Scanner;
 
 public class Book {
 	private String title;
 	private String author;
 	private String bookNum;
 	
-	public boolean CompareTo (String inputTitle) 
+	public boolean CompareTo1 (String inputTitle) 
 	{
 		if(inputTitle.equals(title))
 		{
@@ -18,11 +21,11 @@ public class Book {
 		
 	}
 	
-	public static Book getBook(BookInterface bf) 
+	public static Book getBook1(BookInterface bf) 
 	{
 		
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Ã¥ÀÇ Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä :");
+		System.out.print("ì±…ì˜ ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš” :");
 		String title = scan.nextLine();
 		
 		int i = bf.searchBook(title);
@@ -32,19 +35,19 @@ public class Book {
 		}
 		Book book = new Book();
 		book.title = title;
-		System.out.print("Ã¥ÀÇ ÀúÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä :");
+		System.out.print("ì±…ì˜ ì €ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” :");
 		book.author = scan.nextLine();
-		System.out.print("Ã¥ÀÇ ÄÚµå³Ñ¹ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä :");
+		System.out.print("ì±…ì˜ ì½”ë“œë„˜ë²„ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” :");
 		book.bookNum= scan.nextLine();
 		return book;
 	}
 	
-	public void bookPrint() 
+	public void bookPrint1() 
 	{
 		System.out.println("--------------");
-		System.out.println("Á¦¸ñ: "+ title);
-		System.out.println("ÀúÀÚ: "+ author);
-		System.out.println("Ã¥ÄÚµå³Ñ¹ö: "+ bookNum);
+		System.out.println("ì œëª©: "+ title);
+		System.out.println("ì €ì: "+ author);
+		System.out.println("ì±…ì½”ë“œë„˜ë²„: "+ bookNum);
 	}
 	
 	
