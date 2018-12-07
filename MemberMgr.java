@@ -1,117 +1,116 @@
-import java.util.*; 
-//interface MemInterface
-//{
-//	public int SearchMember(String Telno); 
-//}
+import java.util.*;
+interface IMemSearch{
+	public int SearchMember(String Num);
+}
 
-public class MemberMgr
-{
+public class MemberMgr implements IMemSearch {
 	Vector<Member> MemVector = new Vector<Member>();
-	Scanner scan= new Scanner(System.in);
-	String Telno;
-	private void InserMember() 
+	
+	private void MemberInsert()
+//	private void MemberInsert(MemberMgr this)
 	{
 		Member m = Member.getMember(this);
-		if(m != null) 
+		if (m != null)
 		{
 			MemVector.add(m);
 		}
 		else
 		{
-			System.out.println("중복되는 이름 입니다.");
+			System.out.println("이미 등록된 회원입니다.");
+			System.out.println("----------------");
 		}
 	}
 	
-	private void PrintAllMember() 
+	private void MemberPrint() 
 	{
-		for(int i = 0; i < MemVector.size(); i++) 
+		for(int i = 0 ; i < MemVector.size() ;i++) 
 		{
 			MemVector.get(i).PrintData();
 		}
 	}
 	
-	public int SearchMember(String Telno) 
+	public int SearchMember(String Num)
 	{
-		for(int i = 0 ; i < MemVector.size() ; i++) 
+		for(int i =0 ; i < MemVector.size();i++) 
 		{
-			if(	MemVector.get(i).CompareTo(Telno))
+			if( MemVector.get(i).CompareTellNo(Num))
 			{
-				return i;
-			}
+				return i;	
+			}	
 		}
 		return -1;
 	}
 	
-	public Member SearchMember() 
+	private void SearchMember() 
 	{
-		System.out.print("입력하실 이름 : ");
-		Telno = scan.nextLine();
-		
-		int i = SearchMember(Telno);
-		if(i != -1) 
+		Scanner scan = new Scanner(System.in);
+		System.out.println("찾으려는 전화번호 : ");
+		String Num = scan.nextLine();
+		int i = SearchMember(Num);
+		if (i  != -1)
 		{
-			return MemVector.get(i);
+			MemVector.get(i).PrintData();
 		}
-		else 
+		else
 		{
-			return null;
+			System.out.println("찾으시는 전번이 없습니다.");
+			System.out.println("----------------");
 		}
-		
 	}
 	
-	private void DeleteMember() 
+	private void RemoveMember() 
 	{
-		System.out.print("삭제할 이름 : ");
-		String Telno = scan.nextLine();
-		
-		int i =SearchMember(Telno);
+		Scanner scan = new Scanner(System.in);
+		System.out.println("삭제할 전화번호 : ");
+		String Num = scan.nextLine();
+		int i = SearchMember(Num);
 		if(i != -1) 
 		{
 			MemVector.remove(i);
-			System.out.println("삭제되었습니다.");
+			System.out.println("삭제되었습니다");
 		}
-		else 
-		{
-			System.out.println("일치하지않습니다");
+		else
+		{	
+			System.out.println("찾으시는 전번이 없습니다.");
+			System.out.println("----------------");
+	
 		}
-		
 	}
 	
-	public void Menu() 
+	public void Menu()
 	{
+		Scanner scan= new Scanner(System.in);
 		int iChoice = 1;
 		while(iChoice != 0) 
 		{
-			System.out.println("------------------");
 			System.out.println("1: 회원 등록");
 			System.out.println("2: 회원 출력");
 			System.out.println("3: 회원 검색");
 			System.out.println("4: 회원 삭제");
-			System.out.println("0: 이전화면");
 			iChoice = scan.nextInt();
 			scan.nextLine();
 			switch(iChoice) 
 			{
-			case 1: 
+			case 1:
 				{
-					InserMember();
+					MemberInsert();
 				}
 				break;
-				
-			case 2: 
+			case 2:
 				{
-					PrintAllMember();
+					MemberPrint();
 				}
 				break;
-			case 3: 
+			case 3:
 				{
 					SearchMember();
 				}
 				break;
-			case 4: 
+			case 4:
 				{
-					DeleteMember();
+					RemoveMember();
 				}
+				break;
 			}
 		}
 	}
